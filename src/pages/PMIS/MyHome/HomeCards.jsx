@@ -10,7 +10,6 @@ import { ALERTS } from "../../../store/reducers/component-reducer";
 import MileStoneChart from "../Dashboard1/MileStoneChart";
 import ExpenseApprovalStatus from "../ExpenseAdvanceGraph/ExpenseApprovalStatus";
 import AdvanceApprovalStatus from "../ExpenseAdvanceGraph/AdvanceApprovalStatus";
-import TrendExpenseAdvance from "../ExpenseAdvanceGraph/TrendExpenseAdvance";
 
 const HomeCards = () => {
   const [type, settype] = useState(false);
@@ -102,6 +101,12 @@ const HomeCards = () => {
               "/home/ptw",
               <Unicons.UilFileAlt size="40" color="" />,
             ],
+            [
+              "Airtel RFAI Survey",
+              "bg-pcol",
+              "/home/myAirtelRFAISurvey",
+              <Unicons.UilFileAlt size="40" color="" />,
+            ],
             
           ].map((itm) => (
             <>
@@ -150,7 +155,7 @@ const HomeCards = () => {
         />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 m-2 mt-32  gap-2">
-        {graph1 && <MileStoneChart />}
+        {/* {graph1 && <MileStoneChart />} */}
         {/* <TrendExpenseAdvance /> */}
         {graph2 && <ExpenseApprovalStatus />}
         {graph3 && <AdvanceApprovalStatus />}

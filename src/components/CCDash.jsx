@@ -1,28 +1,12 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Button from "./Button";
-import { backendassetUrl } from "../utils/url";
-import {
-  UilChartBar,
-  UilComparison,
-  UilChartLine,
-  UilAnalytics,
-  UilChartPie,
-  UilSignalAlt3,
-  UilChartPieAlt,
-  UilAnalysis,
-  UilVerticalAlignBottom,
-} from "@iconscout/react-unicons";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import {UilChartBar,UilComparison,UilChartLine,UilAnalytics,UilChartPie,UilSignalAlt3,UilAnalysis} from "@iconscout/react-unicons";
 import { getAccessType } from "../utils/commonFunnction";
 import ConditionalButton from "./ConditionalButton";
 import TrendPlanVSActualWorkdone from "../pages/PMIS/Formss/FinancialGraph/TrendPlanVSActualWorkdone";
 import CirclePlanVSActualWorkdone from "../pages/PMIS/Formss/FinancialGraph/CirclePlanVSActualWorddone";
-import MonthRevenueTrend from "../pages/PMIS/Formss/FinancialGraph/MonthRevenueTrend";
-import MonthlyRevenueCircle from "../pages/PMIS/Formss/FinancialGraph/MonthlyRevenueCircle";
-import CumulativeTrendPlanVsActual from "../pages/PMIS/Formss/FinancialGraph/CumulativeTrendPlanVsActual";
 import MS1AndMS2CircleWise from "../pages/PMIS/Dashboard1/MS1AndMS2CircleWise";
 import CumulativeWorkdonePlanVsActual from "../pages/PMIS/Formss/FinancialGraph/CumulativeWorkdonePlanVsActual";
-import TotalActiveCustomer from "../pages/PMIS/Dashboard1/TotalActiveCustomer";
 import MS2vsWCCPendingReason from "../pages/PMIS/Dashboard1/MS2vsWCCPendingReason";
 import PHYMS1VsMS2 from "../pages/PMIS/Dashboard1/PHYMS1VsMS2";
 import SoftMS1VsMS2 from "../pages/PMIS/Dashboard1/SoftMS1VsMS2";
@@ -37,10 +21,11 @@ const CCDash = ({
   settype,
   approveddata,
   alignment = "horizontal",
-  className,
 }) => {
   const navigate = useNavigate();
   const [selectedCard, setSelectedCard] = useState(null);
+
+  const { cname, customeruniqueId } = useParams();
 
 
   let showType1 = getAccessType("Circle Plan VS Actual Work Done(Graph)")
@@ -180,6 +165,10 @@ const CCDash = ({
     setSelectedCard(null);
   };
 
+  const handleDeployClick = () => {
+    navigate(`${"/projectManagement_1"}/${cname}/I-DeployAllocation/${customeruniqueId}`);
+  }
+
   return (
     <>
       <div className="flex">
@@ -208,6 +197,16 @@ const CCDash = ({
             </button>
             </div>
         )}
+        {oppshowbtn && cname === "AIRTEL" && (
+          <div className="flex ml-auto">
+            <ConditionalButton
+              showType={getAccessType(opplabel)}
+              classes="w-auto h-12 bg-orange-400 text-[18px] border-[0.5px] border-orange-500 custom-classs"
+              onClick={handleDeployClick}
+              name={"I-Deploy Allocation"}
+            />
+          </div>
+        )}
         {oppshowbtn && (
           <div className="flex mr-2 ml-auto">
             <ConditionalButton
@@ -219,9 +218,6 @@ const CCDash = ({
           </div>
         )}
       </div>
-      {/* <div className='p-2 grid-cols-2 sm:grid-cols-4 md:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-6 grid col-span-12 rounded-md gap-3' >
-            {approveddata}
-        </div> */}
 
       <div className="">
         <div
@@ -242,12 +238,6 @@ const CCDash = ({
           <div className="w-full">
             {selectedCard !== null ? (
               <div className="w-full flex flex-col items-center">
-                {/* <button
-                  onClick={handleBackToCards}
-                  className="mb-1 w-16 h-auto bg-[transparent] border-[1.5px] border-[#13b497] text-white font-semibold hover:bg-pcolhover rounded-xl"
-                >
-                  Back
-                </button> */}
                 <div className="w-full">
                   {cardData[selectedCard]?.component}
                 </div>
@@ -277,11 +267,6 @@ const CCDash = ({
           </div>
         </div>
       </div>
-
-
-      {/* <div className={`p-2 w-1/6 grid-cols-1 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 col-span-12 rounded-md gap-2 flex flex-wrap justify-center items-start ${className}`}>
-            {approveddata}
-        </div> */}
     </>
   );
 };

@@ -127,12 +127,7 @@ const ManageProjectSiteId = () => {
             onClick={() => {
               setmodalFullOpen((prev) => !prev);
               setmodalHead("Update Site:-" + itm["Site Id"]);
-              dispatch(
-                GET_ONE_MANAGE_PROJECT_TYPE_DY_FORM({
-                  dataAll: [],
-                  reset: true,
-                })
-              );
+              dispatch(GET_ONE_MANAGE_PROJECT_TYPE_DY_FORM({dataAll: [],reset: true,}));
               dispatch(AdminActions.getOneProjectTypeDyform(itm.uniqueId));
               setmodalBody(
                 <ManageMilestoneSite
@@ -145,8 +140,6 @@ const ManageProjectSiteId = () => {
                   projectuniqueId={projectuniqueId}
                 />
               );
-
-              // setmodalBody(<ManageProjectSiteIdForm projectuniqueId={projectuniqueId} isOpen={modalOpen} setIsOpen={setmodalOpen} resetting={true} formValue={{}} />)
             }}
           >
             {itm["Site Id"]}
@@ -1160,15 +1153,8 @@ const ManageProjectSiteId = () => {
               onClick={(e) => {
                 if (childsite.length > 0) {
                   setmodalOpen((prev) => !prev);
-                  dispatch(
-                    GET_USER_ALLLOCATED_PROJECT({ dataAll: [], reset: true })
-                  );
-                  dispatch(
-                    projectListActions.getUserAllocatedProject(
-                      true,
-                      projectuniqueId
-                    )
-                  );
+                  dispatch(GET_USER_ALLLOCATED_PROJECT({ dataAll: [], reset: true }));
+                  dispatch(projectListActions.getUserAllocatedProject(true,projectuniqueId));
                   setmodalHead("Allocate Task");
                   setmodalBody(
                     <AllocateProjectForm

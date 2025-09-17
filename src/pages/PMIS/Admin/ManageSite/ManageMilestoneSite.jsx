@@ -140,11 +140,7 @@ const ManageMilestoneSite = ({
           }else{
             setValueForm1(iytm["fieldName"], datew[0][iytm["fieldName"]]);
           }
-          console.log(
-            iytm["fieldName"],
-            datew[0][iytm["fieldName"]],
-            "iytmiytmiytmiytm"
-          );
+          console.log(iytm["fieldName"],datew[0][iytm["fieldName"]],"iytmiytmiytmiytm");
 
         });
 
@@ -294,6 +290,7 @@ const ManageMilestoneSite = ({
     { label: "file", value: "", name: "file", required: true, type: "file" },
     { label: "Note", value: "", name: "note", required: true, type: "text" },
   ];
+  
   return (
     <>
       <Modal

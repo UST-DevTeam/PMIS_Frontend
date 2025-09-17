@@ -178,6 +178,27 @@ const SuperAdmin = () => {
             <Unicons.UilPagerduty size="32" color="" />,
             "border-b-[#b8e0d2]",
           ],
+          [
+            "Airtel Mapped Circle",
+            "bg-pcol",
+            "/hr/superAdmin/airtelMappedCircle",
+            <Unicons.UilPagerduty size="32" color="" />,
+            "border-b-[#b8e0d2]",
+          ],
+          [
+            "RFAI Survey Checkllist",
+            "bg-pcol",
+            "/hr/superAdmin/RFAISurveyChecklist",
+            <Unicons.UilPagerduty size="32" color="" />,
+            "border-b-[#b8e0d2]",
+          ],
+          [
+            "RFAI Survey Approver",
+            "bg-pcol",
+            "/hr/superAdmin/RFAISurveyApprover",
+            <Unicons.UilPagerduty size="32" color="" />,
+            "border-b-[#b8e0d2]",
+          ]
         ].map((itm) => {
           return (
             <>

@@ -296,7 +296,6 @@ const CommonActions = {
                 dispatch(ALERTS(msgdata));
                 cb()
             } else {
-                console.log(res, "resresresrescommondownload")
                 dispatch(SET_FILE_BLOB(new Blob([res?.data])))
                 const url = window.URL.createObjectURL(new Blob([res.data]));
                 const link = document.createElement('a');

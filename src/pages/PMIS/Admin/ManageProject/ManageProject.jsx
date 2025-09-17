@@ -111,21 +111,9 @@ const ManageProject = () => {
             <p
               onClick={() => {
                 dispatch(GET_PROJECT_ALL_LIST({dataAll:[],reset:true}))
-                dispatch(
-                  ComponentActions.globalUrlStore(itm.projectId,`/projectManagement_2/${cname}/${ptname}/${itm.custId}/${itm.projectId}/${itm.uniqueId}`
-                  )
-                );
-                dispatch(
-                  ComponentActions.breadcrumb(
-                    itm.projectId,
-                    `/projectManagement_2/${cname}/${ptname}/${itm.custId}/${itm.projectId}/${itm.uniqueId}`,
-                    1,
-                    false
-                  )
-                );
-                navigate(
-                  `/projectManagement_2/${cname}/${ptname}/${itm.custId}/${itm.projectId}/${itm.uniqueId}`
-                );
+                dispatch(ComponentActions.globalUrlStore(itm.projectId,`/projectManagement_2/${cname}/${ptname}/${itm.custId}/${itm.projectId}/${itm.uniqueId}`));
+                dispatch(ComponentActions.breadcrumb(itm.projectId,`/projectManagement_2/${cname}/${ptname}/${itm.custId}/${itm.projectId}/${itm.uniqueId}`,1,false));
+                navigate(`/projectManagement_2/${cname}/${ptname}/${itm.custId}/${itm.projectId}/${itm.uniqueId}`);
               }}
               className="text-pcol font-extrabold hover:underline hover:text-[#CA8A04] focus:outline-none hover:font-semibold"
             >
@@ -609,11 +597,7 @@ const ManageProject = () => {
         searchView={
           <>
             <SearchBarView
-              onblur={(e) => {
-              }}
-              // onchange={(e) => {
-              //   dispatch(AdminActions.getProject(`${customeruniqueId}${projecttypeuniqueId ? "/" + projecttypeuniqueId : ""}`,true,e.target.value != ""? "searvhView=" + e.target.value: ""));
-              // }}
+              onblur={(e) => {}}
               onchange={handleChange}
               placeHolder={"Search...."}
             />

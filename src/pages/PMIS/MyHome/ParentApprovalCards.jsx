@@ -91,6 +91,7 @@ import TreeStructure from "../../../components/TreeStructure";
 const ParentApproverCards = () => {
   let dispatch = useDispatch();
   let navigate = useNavigate();
+  
   const complianceData = [
     {
       title: "Expense/Advance",
@@ -124,6 +125,21 @@ const ParentApproverCards = () => {
     },
   ];
 
+  const complianceData1 = [
+    {
+      title: "RFAI Survey",
+      href: null,
+      children: [
+        {
+          title: "Approver",
+          use: true,
+          href: "/home/approverCards/RFAISurveyApprover",
+          children: [],
+        },
+      ],
+    },
+  ];
+
   const complianceMilestoneData = useSelector((state) => {
     const lApprover = [
       {
@@ -151,41 +167,8 @@ const ParentApproverCards = () => {
         : [],
     };
 
-    return [...complianceData, data];
+    return [...complianceData, data,...complianceData1];
   });
-
-  Compliance: [
-    ["Compliance 1", "bg-pcol", "/home/compliance1"],
-    ["Compliance 2", "bg-pcol", "/home/compliance2"],
-  ];
-
-  let dbConfigListCard = useSelector((state) => {
-    let interdata = state?.adminData?.getCardComplainceMilestone;
-    return interdata?.map((itm) => {
-      let updateditm = {
-        ...itm,
-      };
-      return updateditm;
-    });
-  });
-
-  const cards = [
-    ["Expense/Advance", "bg-pcol", "/home/approverCards"],
-    ["Compliance", "bg-pcol", "/home/complianceMilestoneCard"],
-  ];
-
-  const additionalCards = {
-    "Expense/Advance": [
-      ["L1 Approver", "bg-pcol", "/home/approverCards/L1Approver"],
-      ["L2 Approver", "bg-pcol", "/home/approverCards/L2Approver"],
-      ["Finance Approver", "bg-pcol", "/home/approverCards/FinanceApprover"],
-      ["Settlement Amount", "bg-pcol", "/home/approverCards/SettlementAmount"],
-    ],
-    Compliance: [
-      ["Compliance 1", "bg-pcol", "/home/compliance1"],
-      ["Compliance 2", "bg-pcol", "/home/compliance2"],
-    ],
-  };
 
   const [type, settype] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
@@ -201,10 +184,9 @@ const ParentApproverCards = () => {
         <TreeStructure data={complianceMilestoneData} />
       </div>
 
-      {selectedCard && (
+      {/* {selectedCard && (
         <div className="mt-16">
           <h3 className="text-white font-bold text-lg">
-            {/* Additional Cards for {selectedCard}: */}
           </h3>
           <div className="flex flex-wrap w-3/4 gap-5 p-2">
             {additionalCards[selectedCard]?.map((itm) => (
@@ -218,7 +200,7 @@ const ParentApproverCards = () => {
             ))}
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };

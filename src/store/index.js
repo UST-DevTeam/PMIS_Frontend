@@ -16,9 +16,11 @@ import filterData from "./reducers/filter-reducer";
 import GraphData from "./reducers/graph-reducer";
 import currentuserData from "./reducers/currentuser-reducer";
 import repository from "./reducers/repository-reducer";
-import gpTrackingReducer from "./reducers/gpTracking-reducer"
-import tableReducer from "./reducers/table-reducer"
-import dropDownReducer from "./reducers/dropDown-reducer"
+import gpTrackingReducer from "./reducers/gpTracking-reducer";
+import tableReducer from "./reducers/table-reducer";
+import dropDownReducer from "./reducers/dropDown-reducer";
+import airtelData from "./reducers/airtel-reducer";
+
 const store = configureStore({
     reducer: {
         dropDown:dropDownReducer,
@@ -40,7 +42,8 @@ const store = configureStore({
         GraphData,
         currentuserData,
         repository,
-        gpTrackingReducer
+        gpTrackingReducer,
+        airtelData,
     },
     devTools: true
 })

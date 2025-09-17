@@ -38,13 +38,6 @@ const CommonTableFormSiteParent = ({
   };
 
   useEffect(() => {
-    // funcaller()
-    // setType(true)
-    // return () => {
-    //   funcaller()
-    //   setType(false)
-    //   console.log("component unmounted")
-    // }
     beforeAnyChange()
   }, [activeTab]);
 

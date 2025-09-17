@@ -699,9 +699,6 @@ const ManageComplianceTemplateForm = ({
   }
 
 
-  console.log(tabslist,activeTab[1],"____________tabslist____________")
-
-
 
 
 

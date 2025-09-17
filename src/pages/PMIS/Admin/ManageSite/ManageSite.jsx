@@ -1,33 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import * as Unicons from "@iconscout/react-unicons";
 import { useDispatch, useSelector } from "react-redux";
-import EditButton from "../../../../components/EditButton";
-import ManageProjectTypeForm from "../../../PMIS/Admin/ManageProjectType/ManageProjectTypeForm";
-import AdvancedTable from "../../../../components/AdvancedTable";
-import Modal from "../../../../components/Modal";
 import Button from "../../../../components/Button";
-import DeleteButton from "../../../../components/DeleteButton";
-import CstmButton from "../../../../components/CstmButton";
-import ToggleButton from "../../../../components/ToggleButton";
-import {
-  getAccessType,
-  labelToValue,
-  objectToQueryString,
-} from "../../../../utils/commonFunnction";
+import {getAccessType,labelToValue} from "../../../../utils/commonFunnction";
 import { ALERTS } from "../../../../store/reducers/component-reducer";
-import CommonActions from "../../../../store/actions/common-actions";
-import { Urls, backendassetUrl, baseUrl } from "../../../../utils/url";
-// import AdminActions from '../../../../store/actions/admin-actions';
 import AdminActions from "../../../../store/actions/admin-actions";
-import { useNavigate, useParams } from "react-router-dom";
-import CCDash from "../../../../components/CCDash";
+import { useParams } from "react-router-dom";
 import CommonForm from "../../../../components/CommonForm";
-import CommonTableForm from "../../../../components/CommonTableForm";
-import CommonTableFormParent from "../../../../components/CommonTableFormSiteParent";
 import CommonTableFormSiteParent from "../../../../components/CommonTableFormSiteParent";
-import { SET_DYNAMIC_FORM } from "../../../../store/reducers/projectList-reducer";
-import projectListActions from "../../../../store/actions/projectList-actions";
 import moment from "moment";
 
 const ManageSite = ({
@@ -80,13 +60,6 @@ const ManageSite = ({
     formState: { errors: errorsForm4 },
   } = useForm();
 
-  const [modalOpen, setmodalOpen] = useState(false);
-
-  const [type, settype] = useState(false);
-  const [modalHead, setmodalHead] = useState(<></>);
-  const [uniqueness, setUniqueness] = useState("");
-
-  const [listing, setlisting] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -97,10 +70,6 @@ const ManageSite = ({
   if (showType === "visible") {
     assignfinacial = true;
   }
-
-  // let mappedDataList = useSelector((state) => {
-  //   return state?.projectList?.getMappedData
-  // })
 
   let mappedDataList = useSelector((state) => {
     const data = state?.projectList?.getMappedData;
@@ -132,33 +101,8 @@ const ManageSite = ({
   });
 
   let dataOfProject = useSelector((state) => {
-
     let dataOlder = state.adminData.getProjectTypeDyform[0];
-    console.log(dataOlder,"dataOlderdataOlder")
     return dataOlder;
-    
-    // if (dataOlder.length > 0 && dataOlder[0]["t_sengg"]) {
-    //   let data = dataOlder[0]["t_sengg"].map((its) => {
-    //     console.log(its, "itsitsitsitsitsits");
-    //     return {
-    //       label: its.fieldName,
-    //       required: its.dataType != "Auto Created" ? its.required : false,
-    //       value: "",
-    //       name: its.fieldName,
-    //       type: its.dataType,
-    //     };
-    //   });
-    //   dataOlder[0]["t_sengg"].map((its) => {
-    //     if (its.dataType == "Auto Created") {
-    //       setValue(its.fieldName, "");
-    //     }
-    //   });
-    //   return data;
-    // } else {
-    //   return [];
-    // }
-
-
   });
 
   const handleSiteEnggSubmit = (data) => {
@@ -184,7 +128,6 @@ const ManageSite = ({
         text: datamsg + " is required field.",
       };
       dispatch(ALERTS(msgdata));
-
       return;
     }
 
@@ -215,7 +158,6 @@ const ManageSite = ({
       }
     });
 
-    console.log(final_data, "final_datafinal_data");
     setGlobalData((prev) => {
       return {
         ...prev,
@@ -235,24 +177,6 @@ const ManageSite = ({
   };
 
   const handleTrackingSubmit = (data) => {
-    // setSiteId(data["siteid"]?data["siteid"]:"Add")
-
-    // let final_data = {
-    //     "SubProjectId": dataOfProject["uniqueId"],
-    //     "new_u_id": dataOfProject["new_u_id"],
-    //     "projectuniqueId": projectuniqueId
-
-    // }
-    // dataOfProject["t_tracking"].map((itew) => {
-    //     let fieldNaming = labelToValue(itew.fieldName)
-
-    //     final_data[fieldNaming] = data[fieldNaming]
-    // })
-
-    // dispatch(projectListActions.submitProjectTypeData(Urls.projectList_trackingData, final_data, () => {
-    //     setmodalFullOpen(false)
-    //     dispatch(projectListActions.getProjectTypeAll(projectuniqueId))
-    // }))
 
     let final_data = {};
     dataOfProject["t_tracking"].map((itew) => {
@@ -276,29 +200,9 @@ const ManageSite = ({
       text: "Tracking Data Added Click on submit to close menu",
     };
     dispatch(ALERTS(msgdata));
-    // setmodalFullOpen(false)
   };
 
   const handleIssuesSubmit = (data) => {
-    // console.log(data, "dasugdjsahj")
-    // setSiteId(data["siteid"]?data["siteid"]:"Add")
-
-    // let final_data = {
-    //     "SubProjectId": dataOfProject["uniqueId"],
-    //     "new_u_id": dataOfProject["new_u_id"],
-    //     "projectuniqueId": projectuniqueId
-
-    // }
-    // dataOfProject["t_issues"].map((itew) => {
-    //     let fieldNaming = labelToValue(itew.fieldName)
-
-    //     final_data[fieldNaming] = data[fieldNaming]
-    // })
-
-    // dispatch(projectListActions.submitProjectTypeData(Urls.projectList_issueData, final_data, () => {
-    //     setmodalFullOpen(false)
-    //     dispatch(projectListActions.getProjectTypeAll(projectuniqueId))
-    // }))
 
     let final_data = {};
     dataOfProject["t_issues"].map((itew) => {
@@ -322,93 +226,21 @@ const ManageSite = ({
       text: "Issues Data Added Click on submit to close menu",
     };
     dispatch(ALERTS(msgdata));
-    // setmodalFullOpen(false)
   };
+  
   const bodyData = [];
 
-  const handleFinancialsSubmit = (data) => {
-    // console.log(data, "dasugdjsahj")
-    // setSiteId(data["siteid"]?data["siteid"]:"Add")
 
-    // let final_data = {
-    //     "SubProjectId": dataOfProject["uniqueId"],
-    //     "new_u_id": dataOfProject["new_u_id"],
-    //     "projectuniqueId": projectuniqueId
-
-    // }
-    // dataOfProject["t_sFinancials"].map((itew) => {
-    //     let fieldNaming = labelToValue(itew.fieldName)
-
-    //     final_data[fieldNaming] = data[fieldNaming]
-    // })
-
-    // dispatch(projectListActions.submitProjectTypeData(Urls.projectList_financialData, final_data, () => {
-    //     setmodalFullOpen(false)
-    //     dispatch(projectListActions.getProjectTypeAll(projectuniqueId))
-    // }))
-    let final_data = {};
-    dataOfProject["t_sFinancials"].map((itew) => {
-      let fieldNaming = labelToValue(itew["fieldName"]);
-      final_data[fieldNaming] = data[fieldNaming];
-    });
-
-    setGlobalData((prev) => {
-      return {
-        ...prev,
-        t_sFinancials: final_data,
-      };
-    });
-
-    // let msgdata = {
-    //   show: true,
-    //   icon: "success",
-    //   buttons: [],
-    //   type: 1,
-    //   text: "Financial Data Added Click on submit to close menu",
-    // };
-    // dispatch(ALERTS(msgdata));
-    // setmodalFullOpen(false)
-  };
   const funcaller = () => {
     reset({});
   };
-
-  const handleAddActivity = (res, targ, itm) => {
-    console.log(
-      res,
-      "uniqueness",
-      itm.uniqueId,
-      "uniqueness",
-      "handleAddActivity"
-    );
-
-    let newdata = {
-      [targ]: res,
-    };
-
-    dispatch(
-      AdminActions.patchManageProjectType(true, itm.uniqueId, newdata, () => {
-        // alert("done")
-
-        dispatch(AdminActions.getManageProjectType(customeruniqueId));
-      })
-    );
-  };
-
-  const [modalBody, setmodalBody] = useState(
-    <>
-      {/* <Button name={"sasaass"} onClick={(handleSubmit(handleAddActivity))}></Button> */}
-    </>
-  );
 
   useEffect(() => {
     if (dataOfProject) {
       setValueForm1("project", dataOfProject.projectType);
       setValueForm1("subProject", dataOfProject.subProject);
     }
-    reset({});
-
-    // dispatch(AdminActions.getOneManageProjectType("65dee316811c797c9f26d836/65e59c4488b1db430076f576"))
+    reset({})
   }, [dataOfProject, reset]);
 
   let dtype = {
@@ -425,6 +257,8 @@ const ManageSite = ({
     { label: "file", value: "", name: "file", required: true, type: "file" },
     { label: "Note", value: "", name: "note", required: true, type: "text" },
   ];
+
+  
   return (
     <>
       <div className="p-4">

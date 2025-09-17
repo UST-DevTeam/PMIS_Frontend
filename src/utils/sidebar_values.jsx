@@ -124,6 +124,12 @@ import SubProjectMasterTable from "../pages/PMIS/Admin/SubProjectMasterTable/Sub
 import DeliveryPVA from "../pages/PMIS/Formss/DeliveryPVA/DeliveryPVA";
 import WorkdoneDeliveryPVAMSCards from "../pages/PMIS/Formss/WorkdoneDeliveryPVAMSCards";
 import WorkdoneDeliveryPVACards from "../pages/PMIS/Formss/WorkdoneDeliveryPVACards";
+import AirtelMappedCircle from "../pages/PMIS/Airtel/AirtelMappedCircle";
+import RFAIOffered from "../pages/PMIS/Airtel/RFAIOffered";
+import MyRFAISurveyTask from "../pages/PMIS/Airtel/MyRFAISurveyTask";
+import RFAISurveyApproverList from "../pages/PMIS/Airtel/RFAISurveyApproverList";
+import RFAISurveyApprover from "../pages/PMIS/Airtel/RFAISurveyApprover";
+import RFAISurveyCheckList from "../pages/PMIS/Airtel/RFAISurveyChecklist";
 
 let user = JSON.parse(localStorage.getItem("user"));
 let permission = JSON.parse(localStorage.getItem("permission")) || {};
@@ -865,6 +871,48 @@ export const Sidebar_content = {
       name: "",
       link: "/repository/:customer/:projectGroup/:projectId/:id",
       component: <RepositoryProjectGroupSites />,
+      icon: <UilFileContract className="hover:text-heading cursor-pointer" />,
+      subMenu: [],
+    },
+
+
+    // Airtel Integration
+    {
+      name: "",
+      link: "/hr/superAdmin/airtelMappedCircle",
+      component: <AirtelMappedCircle />,
+      icon: <UilFileContract className="hover:text-heading cursor-pointer" />,
+      subMenu: [],
+    },
+    {
+      name: "",
+      link: "/projectManagement_1/:cname/I-DeployAllocation/:customeruniqueId",
+      subMenu: [],
+      component: <RFAIOffered/>,
+    },
+    {
+      name: "",
+      link: "/home/myAirtelRFAISurvey",
+      subMenu: [],
+      component: <MyRFAISurveyTask />,
+    },
+    {
+      name: "",
+      link: "/hr/superAdmin/RFAISurveyChecklist",
+      subMenu: [],
+      component: <RFAISurveyCheckList />,
+    },
+    {
+      name: "",
+      link: "/hr/superAdmin/RFAISurveyApprover",
+      component: <RFAISurveyApproverList />,
+      icon: <UilFileContract className="hover:text-heading cursor-pointer" />,
+      subMenu: [],
+    },
+    {
+      name: "",
+      link: "/home/approverCards/RFAISurveyApprover",
+      component: <RFAISurveyApprover />,
       icon: <UilFileContract className="hover:text-heading cursor-pointer" />,
       subMenu: [],
     },

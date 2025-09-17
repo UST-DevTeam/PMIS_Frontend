@@ -6,8 +6,6 @@ import Modal from "../../../../components/Modal";
 import CommonForm from "../../../../components/CommonForm";
 import Button from "../../../../components/Button";
 import AdminActions from "../../../../store/actions/admin-actions";
-import HrActions from "../../../../store/actions/hr-actions";
-import { circle } from "leaflet";
 import { useParams } from "react-router-dom";
 import projectListActions from "../../../../store/actions/projectList-actions";
 import { ALERTS } from "../../../../store/reducers/component-reducer";
@@ -149,18 +147,6 @@ const ManageProjectForm = ({ isOpen, setIsOpen, resetting, formValue = {}, filte
       },
       classes: "col-span-1",
     },
-    // {
-    //   label: "Sub-Project Type",
-    //   name: "subProject",
-    //   type: "select",
-    //   value: "",
-    //   option: subProjectList,
-    //   required: true,
-    //   props: {
-    //     onChange: (e) => {},
-    //   },
-    //   classes: "col-span-1",
-    // },
     {
       label: "Circle",
       name: "circle",
@@ -238,12 +224,8 @@ const ManageProjectForm = ({ isOpen, setIsOpen, resetting, formValue = {}, filte
       classes: "col-span-1",
     },
   ];
-  const onSubmit = (data) => {
-    console.log(data, "datadatadatadata");
-    // dispatch(AuthActions.signIn(data, () => {
-    //     navigate('/authenticate')
-    // }))
-  };
+
+
   const onTableViewSubmit = (data) => {
 
     let startDate = data['startDate'];
@@ -303,6 +285,7 @@ const ManageProjectForm = ({ isOpen, setIsOpen, resetting, formValue = {}, filte
       );
     }
   };
+
   useEffect(() => {
     dispatch(AdminActions.getManageProjectGroup(true, "", customeruniqueId));
     dispatch(AdminActions.getManageProjectType(customeruniqueId));
@@ -324,7 +307,6 @@ const ManageProjectForm = ({ isOpen, setIsOpen, resetting, formValue = {}, filte
       });
     } else {
       reset({});
-      // console.log(formValue, "Object.keys(formValue)");
       Form.forEach((key) => {
         if (["startDate", "endDate"].indexOf(key.name) != -1) {
           // console.log("date formValuekey", key.name, formValue[key.name]);

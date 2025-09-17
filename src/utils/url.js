@@ -1,12 +1,13 @@
 // export const baseUrl = "https://devapi.mcpspmis.com"
 // export const backendassetUrl = "https://devapi.mcpspmis.com/"
 
-export const baseUrl = "https://api.mcpspmis.com"
-export const backendassetUrl = "https://api.mcpspmis.com/"
-// export const baseUrl="https://androidapi.mcpspmis.com"
-// export const backendassetUrl="https://androidapi.mcpspmis.com/"
-// export const baseUrl = "http://localhost:7980";
-// export const backendassetUrl = "http://localhost:7980/";
+// export const baseUrl = "https://api.mcpspmis.com"
+// export const backendassetUrl = "https://api.mcpspmis.com/"
+
+
+export const baseUrl = "http://localhost:7585";
+export const backendassetUrl = "http://localhost:7585/";
+
 // export const baseUrl = "http://192.168.1.59:7980";
 // export const backendassetUrl = "http://192.168.1.59:7980/";
 
@@ -281,7 +282,23 @@ export const Urls = {
   getCircle: "/currentuser/Circle/projectId",
   getCircleSubPorjectType: "admin/deliveryPva/masterSubProject",
   patchEvmActual: "/forms/EVMActual",
-  getPvaData: "/forms/EVMActual"
+  getPvaData: "/forms/EVMActual",
+
+
+
+  //  Airtel Integration Start -----------------
+
+  airtelMappedCircle:"/airtel/mappedCircle",
+  airtelCircleList:"/airtel/CircleList",
+  common_file_uploadr_airtel:"/airtel/commonUploadFile",
+  airtelRFAIOffered:"/airtel/RFAIOffered",
+  airtelProjectAllocationlist:"/airtel/projectAllocationList",
+  airtelMyRFAISurveyTask:"/airtel/myRFAISurveyTask",
+  airtelRFAISurveyApproverList:"/airtel/approverList",
+  airtelCurrentUserCircleList:"/airtel/currentUserCircleList",
+  airtelonePlanningData:"/airtel/getOnePlanningData",
+  airtelSurveyChecklist:"/airtel/surveyChecklist",
+  
 
 };
 
